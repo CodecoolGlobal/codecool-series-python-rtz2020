@@ -15,6 +15,11 @@ def design():
     return render_template('design.html')
 
 
+@app.route('/test-gf')
+def test_gf():
+    return 'Hello gitflow!'
+
+
 def main():
     app.run(debug=True)
 
