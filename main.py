@@ -20,8 +20,6 @@ def test_gf():
     return 'Hello gitflow!'
 
 
-
-
 def main():
     app.run(debug=True)
 
