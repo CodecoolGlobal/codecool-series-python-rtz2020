@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template
+
 from data import queries
 
 app = Flask('codecool_series')
@@ -15,9 +16,10 @@ def design():
     return render_template('design.html')
 
 
-@app.route('/test-gf')
-def test_gf():
-    return 'Hello gitflow!'
+@app.route('/top-actors')
+def get_top_actors():
+    top_actors = queries.get_top_actors(10)
+    return render_template('top_actors.html', top_actors=top_actors, top_actors_length=len(top_actors))
 
 
 def main():
