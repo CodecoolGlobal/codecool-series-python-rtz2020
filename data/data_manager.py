@@ -35,13 +35,13 @@ def get_connection_data(db_name=None):
     :db_name: optional parameter. By default it uses the environment variable value.
     """
     if db_name is None:
-        db_name = os.environ.get('MY_PSQL_DBNAME')
+        db_name = 'codecool-series'
 
     return {
         'dbname': db_name,
-        'user': os.environ.get('MY_PSQL_USER'),
-        'host': os.environ.get('MY_PSQL_HOST'),
-        'password': os.environ.get('MY_PSQL_PASSWORD')
+        'user': 'qwe2000',
+        'host': 'localhost',
+        'password': 'FamZeb322'
     }
 
 

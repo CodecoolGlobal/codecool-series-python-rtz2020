@@ -4,7 +4,7 @@ import os
 
 def init_db():
     init_conn = get_connection_data('postgres')
-    db_name = os.environ.get('MY_PSQL_DBNAME')
+    db_name = 'codecool'
 
     with establish_connection(connection_data=init_conn) as conn:
         with conn.cursor() as cursor:
@@ -20,7 +20,7 @@ def init_db():
 
 
 def create_schema():
-    creation_script_file = 'data/db_schema/01_create_schema.sql'
+    creation_script_file = '/home/qwe2000/projects/codecool-series-python-rtz2020/data/db_schema/01_create_schema.sql'
     with open(creation_script_file) as schema_script:
         with establish_connection() as conn, \
                 conn.cursor() as cursor:
