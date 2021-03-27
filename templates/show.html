@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>Shows</title>
+
+    <!-- Import Montserrat font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <!-- Normalize.css fixes lot of differences between browsers default styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css"/>
+
+    <!-- project wide styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/site.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/background.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/button.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/card.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/table.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/form.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/grid.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/utils.css') }}">
+
+    <!-- page specific styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/detailed-view.css') }}">
+
+</head>
+<body>
+  <div id="body-wrapper">>
+      <header class="clearfix">
+        <img
+          id="header-logo"
+          src="{{ url_for('static', filename='assets/codecool-logo.png') }}"
+          alt="Codecool Logo"
+        />
+        <span id="header-title" class="title">
+          Codecool Series DB
+        </span>
+        <div id="header-auth">
+          <a href="/register"
+            ><button type="button" id="bt_register">Register</button>
+          </a>
+          <a href="/login">
+            <button type="button" id="bt_login">Login</button>
+          </a>
+        </div>
+      </header>
+    {% for show in details %}
+      <div class="card detailed-view">
+          <div class="row">
+            <img
+              src="https://www.impawards.com/2016/posters/deadpool_ver5.jpg"
+              alt="show-poster"
+              class="poster col col-third"
+            />
+            <div class="col col-twothird">
+              <h2>{{show.title}}</h2>
+              {% for genre in genres%}
+              <p class="small grayed">
+                {{show.runtime}} <span class="separator">|</span> {{genre.genre}} <span class="separator">|</span> {{show.year}}<span class="separator">|</span>{{show.rating}} ☆
+              </p>
+              {% endfor %}
+              <p>
+              {{show.overview}}
+              </p>
+            </div>
+            {% if show.trailer %}
+            <div class="trailer-container">
+              <iframe src="{{show.trailer}}" type="text/html" width='800' height="500" frameborder="0" ></iframe>
+            </div>
+            {% endif %}
+          </div>
+          <div>
+            <p><b>Actors:</b>&nbsp;</p>
+            {% for actor in actors %}
+            <p>
+              {{actor.actors}}
+            </p>
+            {% endfor %}
+          </div>
+          <div class="return-to-main-page-btn">
+            <a href="/shows/most-rated/0">
+              <button>Go back</button>
+            </a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="seasons-table-title">
+            <h3>Seasons</h3>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Overview</th>
+                <th>Season number</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for season in seasons %}
+              <tr>
+                <td>{{season.title}}</td>
+                <td>{{season.overview}}</td>
+                <td>{{season.season_number}}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <footer>
+        Copyright, bla-bla
+      </footer>
+  </div>
+  <div class="background">
+    <div class="dark-blue-layer"></div>
+    <div class="light-blue-layer"></div>
+  </div>
+{% endfor %}
+<script src='/static/js/changeURL.js'>
+</script>
+<div class="background">
+    <div class="dark-blue-layer"></div>
+    <div class="light-blue-layer"></div>
+</div>
+</body>
+</html>
