@@ -16,11 +16,12 @@ def design():
     return render_template('design.html')
 
 
+@app.route('/shows', methods=["GET", "POST"])
 @app.route('/shows/most-rated/<int:page>', methods=["GET", "POST"])
-def most_rated(page):
+def most_rated(page=0):
     counter = 0
-    order_by = 'rating'
-    ascdesc = 'DESC'
+    order_by = request.args.get('order_by')
+    ascdesc = request.args.get('order')
     last_page_data = queries.get_last_page()
     last_page = math.ceil(last_page_data[0]['last_page']/15)
     for pages in range(0, last_page):

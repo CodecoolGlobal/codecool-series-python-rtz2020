@@ -25,13 +25,26 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style/form.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style/grid.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style/utils.css') }}">
-
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
     <!-- page specific styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style/detailed-view.css') }}">
 
 </head>
 
 <body>
+<style>
+ #pagination {
+  display: inline-block;
+}
+
+#pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+</style>
+
 <div id="body-wrapper">
     <header class="clearfix">
         <img id="header-logo" src="{{ url_for('static', filename='assets/codecool-logo.png') }}" alt="Codecool Logo">
@@ -46,18 +59,18 @@
     <section>
         <h1 class="title text-center">Shows</h1>
         <div class="card">
-            <table>
+            <table class="sortable">
                 <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Year</th>
-                    <th>Runtime (min)</th>
-                    <th>Rating</th>
-                    <th>Genres</th>
-                    <th>Trailer</th>
-                    <th>Homepage</th>
-                </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Year</th>
+                        <th>Runtime (min)</th>
+                        <th>Rating</th>
+                        <th>Genres</th>
+                        <th>Trailer</th>
+                        <th>Homepage</th>
+                    </tr>
                 </thead>
                 <tbody>
                 {% for row in data %}
@@ -102,6 +115,22 @@
                 {% endfor %}
                 </tbody>
             </table>
+        </div>
+        <div class="card" id="pagination">
+            <a href="{{page-1}}">&laquo;</a>
+            <a id="1" href="/shows/most-rated/1">1</a>
+            <a id="2" href="/shows/most-rated/2">2</a>
+            <a id="3" href="/shows/most-rated/3">3</a>
+            <a id="4" href="/shows/most-rated/4">4</a>
+            <a id="5" href="/shows/most-rated/5">5</a>
+            <a id="6" href="/shows/most-rated/6">6</a>
+            <a id="7" href="/shows/most-rated/7">7</a>
+            <a id="8" href="/shows/most-rated/8">8</a>
+            <a id="9" href="/shows/most-rated/9">9</a>
+            <a id="10" href="/shows/most-rated/10">10</a>
+            <a id="11" href="/shows/most-rated/11">11</a>
+            <a id="12" href="/shows/most-rated/12">12</a>
+            <a href="{{page+1}}">&raquo;</a>
         </div>
     </section>
     <footer>
