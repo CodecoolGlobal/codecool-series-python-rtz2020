@@ -25,13 +25,14 @@ def get_last_page():
 
 def get_actors_by_show_id(show_id):
     return data_manager.execute_select(
-        f'''SELECT DISTINCT shows.id, string_agg(actors.name::character varying, ', ') AS actors
+        f'''SELECT show_id, actors.name AS actors
         FROM shows
         INNER JOIN show_characters ON shows.id = show_characters.show_id
         INNER JOIN actors ON actors.id = show_characters.actor_id
         WHERE shows.id = {show_id}
-        GROUP BY 1
-        LIMIT 3
+        GROUP BY actors.name, show_id
+        ORDER BY COUNT(show_id)
+        LIMIT 3;
         '''
     )
 
