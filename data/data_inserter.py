@@ -68,7 +68,8 @@ def insert_shows(limit=20, max_show_count=1000):
 
             statement = """
                 INSERT INTO shows (id, title, year, overview, runtime, trailer, homepage, rating)
-                VALUES (%(id)s, %(title)s, %(year)s, %(overview)s, %(runtime)s, %(trailer)s, %(homepage)s, %(rating)s);"""
+                VALUES (%(id)s, %(title)s, %(year)s, %(overview)s, %(runtime)s, %(trailer)s, %(homepage)s, %(rating)s);
+                """
 
             try:
                 execute_dml_statement(statement, show)

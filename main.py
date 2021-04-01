@@ -1,5 +1,5 @@
-from flask import Flask, render_template, url_for, request
-from data import queries, data_manager
+from flask import Flask, render_template, request
+from data import queries
 import math
 
 app = Flask('codecool_series')
