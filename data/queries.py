@@ -23,6 +23,7 @@ def get_last_page():
         FROM SHOWS'''
     )
 
+
 def get_actors_by_show_id(show_id):
     return data_manager.execute_select(
         f'''SELECT show_id, actors.name AS actors
@@ -69,3 +70,8 @@ def get_show_genre_by_id(show_id):
         GROUP BY 1
         '''
     )
+
+
+def create_user_table(password, username):
+    data_manager.execute_select(
+        f'''INSERT INTO userdata VALUES('{password}', '{username}')''')

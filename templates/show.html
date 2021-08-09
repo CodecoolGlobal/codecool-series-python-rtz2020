@@ -53,11 +53,6 @@
     {% for show in details %}
       <div class="card detailed-view">
           <div class="row">
-            <img
-              src="https://www.impawards.com/2016/posters/deadpool_ver5.jpg"
-              alt="show-poster"
-              class="poster col col-third"
-            />
             <div class="col col-twothird">
               <h2>{{show.title}}</h2>
               {% for genre in genres%}
@@ -122,8 +117,6 @@
     <div class="light-blue-layer"></div>
   </div>
 {% endfor %}
-<script src='/static/js/changeURL.js'>
-</script>
 <div class="background">
     <div class="dark-blue-layer"></div>
     <div class="light-blue-layer"></div>
